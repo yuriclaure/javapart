@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<researcher>
+	<article title = "Voando com cangurus">
+		<author>
+			<name>R. D. Jow</name>
+			<e-mail>rdjow@uol.com.br</e-mail>
+		</author>
+		<author>
+			<name>R. D. Jow</name>
+			<e-mail>rdjow@uol.com.br</e-mail>
+		</author>
+		<journal>Revista Science</journal>
+		<year>1998</year>
+	</article>
+	<article title = "Voando com cangurus">
+		<author>
+			<name>R. D. Jow</name>
+			<e-mail>rdjow@uol.com.br</e-mail>
+		</author>
+		<author>
+			<name>R. D. Jow</name>
+			<e-mail>rdjow@uol.com.br</e-mail>
+		</author>
+		<journal>Revista Science</journal>
+		<year>1998</year>
+	</article>
+	<book>
+	</book>
+	<inbook>
+	</inbook>
+	<inproceedings>
+	</inproceedings>
+</researcher>

@@ -6,42 +6,40 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import IO.Console;
+import IO.*;
 import Publications.Article;
 import java.util.*;
 import Types.*;
 
 public class Pjava {
-	
+
 	public static Researcher researcher = new Researcher();
 	public static String fileName;
-	
+
 	public static void main(String[] args) {
-		
+
 		SAXBuilder builder = new SAXBuilder();
 
 		try {
-			
+
 			System.out.println("Bem vindo ao gerenciador de publicações.");
 			fileName = Console.readString("Digite o nome do arquivo");
+
 			
-			System.out.println(fileName);
-			File xmlFile = new File("example.xml");
-			if (!xmlFile.exists())
-				xmlFile.createNewFile();
+			File xmlFile = new File(fileName);
+			/*
+			 * if (!xmlFile.exists()) xmlFile.createNewFile();
+			 */
 
 			Document document = (Document) builder.build(xmlFile);
 			Element rootNode = document.getRootElement();
-			
-			loadXML(rootNode);
-			
-			researcher.print(PublicationType.Article);
-			
-			printMenu();
-			
-			
 
-		
+			loadXML(rootNode);
+
+			System.out.println("<" + fileName + ">");
+
+			if (Menu.mainMenu() == MenuCommand.Print)
+				researcher.print(PublicationType.Article);
 
 		} catch (IOException io) {
 			System.out.println(io.getMessage());
@@ -49,15 +47,9 @@ public class Pjava {
 			System.out.println(jdomex.getMessage());
 		}
 	}
-	
-	public static void printMenu() throws IOException {
-		System.out.println("<"+fileName+">");
-		System.out.println("1 - ");
-	}
-	
-	
+
 	public static void loadXML(Element rootNode) {
-		
+
 		List<Element> list = rootNode.getChildren("article");
 		for (Element node : list)
 			researcher.add(PublicationType.Article, node);
@@ -80,7 +72,7 @@ public class Pjava {
 
 		list = rootNode.getChildren("phdthesis");
 		for (Element node : list)
-			researcher.add(PublicationType.Phdthesis, node);			
+			researcher.add(PublicationType.Phdthesis, node);
 
 		list = rootNode.getChildren("proceedings");
 		for (Element node : list)
@@ -89,6 +81,5 @@ public class Pjava {
 		list = rootNode.getChildren("techreport");
 		for (Element node : list)
 			researcher.add(PublicationType.Techreport, node);
-		
 	}
 }
